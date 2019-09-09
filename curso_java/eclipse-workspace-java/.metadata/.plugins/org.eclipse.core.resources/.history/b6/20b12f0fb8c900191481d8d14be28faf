@@ -1,0 +1,21 @@
+package br.com.alura.java.io.teste;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStreamReader;
+
+public class TesteLeitura {
+
+	public static void main(String[] args) throws FileNotFoundException {
+		
+		// Fluxo de Entrada Com Arquivo
+		FileInputStream fis = new FileInputStream("mussum.txt"); // Código binário - Fluxo concreto
+		InputStreamReader isr = new InputStreamReader(fis); // Transformando o Binário em Character
+		BufferedReader br = new BufferedReader(isr); // Transformando os Characteres em Linhas
+		
+		String linha = br.readLine();
+		
+	}
+
+}

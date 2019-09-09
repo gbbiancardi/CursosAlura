@@ -1,0 +1,27 @@
+package br.com.bytebank.banco.teste.util;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+public class Exercicio {
+
+	public static void main(String[] args) {
+		List<String> nomes = new ArrayList<>();
+		nomes.add("Super Mario");
+		nomes.add("Yoshi"); 
+		nomes.add("Donkey Kong"); 
+
+		Collections.sort(nomes, new Comparator<String>() {
+
+		    @Override
+		    public int compare(String s1, String s2) {
+		        return s1.length() - s2.length();
+		    }
+		});
+
+		System.out.println(nomes);
+	}
+
+}

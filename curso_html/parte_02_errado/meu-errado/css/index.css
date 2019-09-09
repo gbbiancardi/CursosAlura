@@ -1,0 +1,226 @@
+main {
+    width: 100%;
+    padding-bottom: 0;
+    float: none;
+}
+.foto-home {
+    height: 200px;
+    border-radius: 100%;
+}
+header {
+    position: relative;
+}
+.palavra-home {
+    position: absolute;
+    font-family: "Shadows Into Light", cursive;
+    font-weight: bold;
+    color: #D5447E;
+    font-size: .3em;
+}
+.javascript {
+    top: 18%;
+    left: 65%;
+    transform: rotate(-10deg);
+}
+.eficiencia{
+    top: 35%;
+    left: 68%;
+    transform: rotate(5deg);
+}
+.boas-praticas {
+    top: 42%;
+    left: 78%;
+    transform: rotate(-15deg);
+}
+.codigo-limpo {
+    top: 60%;
+    left: 72%;
+    transform: rotate(5deg);
+}
+.html5 {
+    top: 22%;
+    left: 77%;
+    transform: rotate(-5deg);
+}
+.acessibilidade {
+    top: 18%;
+    left: 15%;
+    transform: rotate(10deg);
+}
+.responsivo {
+    top: 35%;
+    left: 5%;
+    transform: rotate(-15deg);
+}
+.otimizacoes {
+    top: 31%;
+    left: 25%;
+    transform: rotate(-15deg);
+}
+.css3 {
+    top: 52%;
+    left: 23%;
+    transform: rotate(-5deg);
+}
+.agilidade {
+    top: 40%;
+    left: 15%;
+    transform: rotate(10deg);
+}
+.design {
+    top: 60%;
+    left: 10%;
+    transform: rotate(5deg);
+}
+.banner-twitter {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform-origin: 0 0;
+    transform: translate(6.5754em, -2.4749em) rotate(45deg);
+
+    width: 14em;
+    padding: 1em 0;
+    box-sizing: border-box;
+    line-height: 1;
+
+    text-decoration: none;
+    color: #FFF;
+    text-transform: none;
+    background-color: #3C1D3D;
+    border: .25em solid black;
+
+    font-size: .5em;
+}
+.subtitulo-principal{
+    text-align: center;
+    font-size: .5em;
+}
+.saudacao p {
+    font-size: 1.5em;
+    color: #99A;
+    line-height: 1;
+    padding: 2em;
+    margin: auto 4em;
+}
+.saudacao-inicio {
+    font-size: 3em;
+    color: #889;
+}
+.saudacao-ultima-linha {
+    text-align: right;
+    display: block;
+}
+.saudacao strong {
+    font-size: 2em;
+    color: #000;
+}
+.saudacao em {
+    display: inline-block;
+    font-size: 3em;
+    color: #851944;
+    transform: rotate(-5deg) skew(-10deg);
+}
+.botao-index {
+    font-size: 1.25em;
+    background-color: #851944;
+    color: #FFF;
+    border: .2em solid black;
+    width: 40ch;
+    display: block;
+    text-align: center;
+    margin: 2em auto;
+    padding: .5em;
+
+}
+.secao-inicio {
+    padding: 2em;
+}
+.secao-inicio h2 {
+    text-transform: uppercase;
+    font-size: 3em;
+}
+.trabalhos {
+    background-color: #3C1D3D;
+    border-top: .5em solid #000;
+    border-bottom: .5em solid #000;
+}
+.trabalhos h2 {
+    color: #FFF;
+    padding-bottom: .5em;
+}
+.trabalhos ul {
+    overflow: hidden;
+    border: .5em solid black;
+}
+.trabalhos li {
+    float: left;
+    width: 33.333%;
+}
+.trabalhos img {
+    width: 100%;
+    display: block;
+}
+
+.blog {
+    background-color: #999;
+    border-bottom: .5em solid #851944;
+    position: relative;
+}
+.blog h2 {
+    color: #FFF;
+}
+.blog small {
+    position: relative;
+    color: #FFF;
+    top: -.5em;
+}
+.blog ol {
+    margin: 2em 0;
+}
+.blog li {
+    width: 30%;
+}
+.blog li a {
+    color: #FCF;
+    padding: .5em;
+    display: block;
+}
+.link-inicio-post {
+    background-color: #F2FFFC;
+    padding: 1em;
+}
+.blog .inicio-post {
+    position: absolute;
+    top: 4em;
+    height: 8em;
+    left: 30%;
+    right: 4em;
+    background-color: #F2FFFC;
+    color: #000;
+    padding: 1.5em;
+    border-radius: 10px;
+}
+.blog .mais-recente {
+    background-color: #F2FFFC;
+    border-radius: 10px;
+}
+.blog .mais-recente a {
+    color: #F26;
+}
+footer {
+    background-color: #000;
+    color: #FFF;
+    padding: 2em;
+}
+.footer h2 {
+    font-size: 3em;
+}
+footer a {
+    color: #F99;
+}
+main {
+    width: 100%;
+    padding-bottom: 0;
+    float: none;
+}

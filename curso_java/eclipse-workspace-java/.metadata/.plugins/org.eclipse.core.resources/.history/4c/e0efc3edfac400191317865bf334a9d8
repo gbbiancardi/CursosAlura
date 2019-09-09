@@ -1,0 +1,11 @@
+
+public class TesteValores {
+
+	public static void main(String[] args) {
+		System.out.println(conta.getTotal());
+		Conta conta = new Conta(123, 4567);
+		
+		System.out.println(conta.getAgencia());
+	}
+
+}

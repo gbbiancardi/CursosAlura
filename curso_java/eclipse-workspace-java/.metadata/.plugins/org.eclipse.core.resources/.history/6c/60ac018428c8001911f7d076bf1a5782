@@ -1,0 +1,86 @@
+public abstract class Conta {
+	protected double saldo;
+	private int agencia;
+	private int conta;
+	private Cliente titular;
+	private static int total = 0;
+
+	public Conta(int agencia, int conta) {
+		Conta.total++;
+		// System.out.println("O total de contas é " + Conta.total);
+		this.agencia = agencia;
+		this.conta = conta;
+		// this.saldo = 100;
+		// System.out.println("Conta: "+conta);
+	}
+
+	public abstract void deposita(double valor);
+
+	public void saca(double valor) {
+		
+		if (this.saldo < valor) {
+			// problema
+		}
+		
+		this.saldo -= valor;
+	}
+
+	public boolean transfere(double valor, Conta contaDestino) {
+		if (this.saca(valor)) {
+			contaDestino.deposita(valor);
+			// OU => contaDestino.saldo += valor;
+			return true;
+		}
+
+		return false;
+	}
+
+	public double getSaldo() {
+		return saldo;
+	}
+
+	public int getAgencia() {
+		return agencia;
+	}
+
+	public void setAgencia(int agencia) {
+		if (agencia >= 0) {
+			this.agencia = agencia;
+		} else {
+			System.out.println("Não pode valor negativo!");
+			return;
+		}
+
+	}
+
+	public int getConta() {
+		return conta;
+	}
+
+	public void setConta(int conta) {
+		if (conta >= 0) {
+			this.conta = conta;
+		} else {
+			System.out.println("Não pode valor negativo!");
+			return;
+		}
+
+	}
+
+	public Cliente getTitular() {
+		return titular;
+	}
+
+	public void setTitular(Cliente titular) {
+		this.titular = titular;
+	}
+
+	public static int getTotal() {
+		return total;
+	}
+
+	public static void setTotal(int total) {
+		Conta.total = total;
+	}
+
+}

@@ -1,0 +1,14 @@
+package br.com.alura.java.io.teste;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
+public class TesteLeitura {
+
+	public static void main(String[] args) throws FileNotFoundException {
+		
+		// Fluxo de Entrada Com Arquivo
+		FileInputStream fis = new FileInputStream("mussum.txt");
+	}
+
+}

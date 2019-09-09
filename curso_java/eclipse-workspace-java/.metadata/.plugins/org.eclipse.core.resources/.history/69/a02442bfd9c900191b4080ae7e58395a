@@ -1,0 +1,13 @@
+package br.com.bytebank.banco.teste.io;
+
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+
+public class TesteDeserializacao {
+
+	public static void main(String[] args) {
+		ObjectInputStream ois = new ObjectInputStream(new FileInputStream("cc.bin"));
+
+	}
+
+}

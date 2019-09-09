@@ -1,0 +1,20 @@
+package br.com.alura.java.io.teste;
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class TesteEscrita2 {
+
+	public static void main(String[] args) throws IOException {
+
+		FileWriter fw = new FileWriter("mussum2.txt");
+		
+		fw.write("Mussum Ipsum, cacilds vidis litro abertis. Nullam volutpat risus nec leo commodo");
+		fw.write("\r\n");
+		fw.write("\r\n");
+		fw.write("nisi eros vermeio. Interagi no me, cursus quis, vehicula ac nisi.");
+		
+		fw.close();
+	}
+
+}

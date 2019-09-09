@@ -1,0 +1,23 @@
+package br.com.bytebank.banco.teste.io;
+
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+
+import br.com.bytebank.banco.modelo.Cliente;
+
+public class TesteSerializacao {
+
+	public static void main(String[] args) {
+		
+		Cliente cliente = new Cliente();
+		cliente.setNome("Gabriel");
+		cliente.setCpf("423095678-09");
+		cliente.setProfissao("Dev");
+		
+		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("cliente.bin"));
+		oos.writeObject(cliente);
+		oos.close();
+
+	}
+
+}

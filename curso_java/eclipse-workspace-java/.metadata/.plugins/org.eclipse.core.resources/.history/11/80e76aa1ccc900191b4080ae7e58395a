@@ -1,0 +1,39 @@
+package br.com.alura.java.io.teste;
+
+import java.io.File;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class TesteLeitura2 {
+
+	public static void main(String[] args) throws Exception {
+		
+		Scanner sc = new Scanner(new File("contas.csv"));
+		
+		while (sc.hasNextLine()) {
+			String linha = sc.nextLine();
+			System.out.println(linha);
+			
+			Scanner linhaScanner = new Scanner(linha);
+			linhaScanner.useDelimiter(",");
+			
+			String valor1 = linhaScanner.next();
+			String valor2 = linhaScanner.next();
+			String valor3 = linhaScanner.next();
+			String valor4 = linhaScanner.next();
+			String valor5 = linhaScanner.next();
+			String valor6 = linhaScanner.next();
+			
+			System.out.println(valor1 + valor2 + valor3 + valor4 + valor5 + valor6);
+			
+			linhaScanner.close();
+			
+//			Colocar o cvs num array e separar cada elemento do Array pela vírgula, assim conseguindo acessar qualquer elemento do csv
+//			String[] valores = linha.split(",");
+//			System.out.println(valores[3]);
+		}
+
+		sc.close();
+	}
+
+}
