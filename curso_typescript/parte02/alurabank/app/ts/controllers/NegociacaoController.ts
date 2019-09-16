@@ -1,42 +1,69 @@
 import { Negociacao, Negociacoes } from '../models/index';
 import { NegociacoesView, MensagemView } from '../views/index';
+import { domInject } from '../helpers/decorators/index';
 
 export class NegociacaoController {
 
+    @domInject('#data')
     private _inputData: JQuery;
+
+    @domInject('#quantidade')
     private _inputQuantidade: JQuery;
+
+    @domInject('#valor')
     private _inputValor: JQuery;
+
     private _negociacoes = new Negociacoes();
     private _negociacoesView = new NegociacoesView('#negociacoesView');
     private _mensagemView = new MensagemView('#mensagemView');
 
     constructor() {
-
-        this._inputData = $('#data'); // Fazendo casting < >
-        this._inputQuantidade = $('#quantidade');
-        this._inputValor = $('#valor');
         this._negociacoesView.update(this._negociacoes);
     }
-    
+
     adiciona(event: Event) {
-        
+
         event.preventDefault();
-        
+
+        let data = new Date(this._inputData.val().replace(/-/g, ','));
+
+        if (!this._ehDiaUtil(data)) {
+
+            this._mensagemView.update('Valores não pode ser cadastrados de Sábado e Domingo!');
+            return
+        }
+
         const negociacao = new Negociacao(
-            new Date(this._inputData.val().replace(/-/g, ',')),
+            data,
             parseInt(this._inputQuantidade.val()),
             parseInt(this._inputValor.val())
-            );
-            
-            this._negociacoes.paraArray().forEach(negociacao => {
-                console.log(negociacao.data);
-                console.log(negociacao.quantidade);
-                console.log(negociacao.valor);
-            });
+        );
 
-            this._negociacoes.adiciona(negociacao);
+        this._negociacoes.paraArray().forEach(negociacao => {
+            console.log(negociacao.data);
+            console.log(negociacao.quantidade);
+            console.log(negociacao.valor);
+        });
 
-            this._negociacoesView.update(this._negociacoes);
-            this._mensagemView.update('Negociação adicionada com sucesso!');
-        }
+        this._negociacoes.adiciona(negociacao);
+
+        this._negociacoesView.update(this._negociacoes);
+        this._mensagemView.update('Negociação adicionada com sucesso!');
     }
+
+    private _ehDiaUtil(data: Date) {
+
+        return data.getDay() != DiaDaSemana.Domingo && data.getDay() != DiaDaSemana.Sabado;
+    }
+}
+
+enum DiaDaSemana {
+
+    Domingo,
+    Segunda,
+    Terca,
+    Quarta,
+    Quinta,
+    Sexta,
+    Sabado
+}
