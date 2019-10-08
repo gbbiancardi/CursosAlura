@@ -1,5 +1,6 @@
 package br.com.casadocodigo.loja.conf;
 
+import java.sql.SQLException;
 import java.util.Properties;
 
 import javax.persistence.EntityManagerFactory;
@@ -16,7 +17,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class JPAConfiguration {
 
 	@Bean
-	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+	public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws SQLException {
 		LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
 		
 		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
@@ -24,21 +25,22 @@ public class JPAConfiguration {
 		
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setUsername("root");
-		dataSource.setPassword("");
-		dataSource.setUrl("jbdc:mysql://localhost:3306/casadocodigo");
+		dataSource.setPassword("P@lmeiras123");
+		dataSource.setUrl("jdbc:mysql://localhost:3306/casadocodigo?useTimezone=true&serverTimezone=UTC");
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 		
 		factoryBean.setDataSource(dataSource);
-		
-		Properties props = new Properties();
-		props.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
-		props.setProperty("hibernate.show_sql", "true");
-		props.setProperty("hibernate.hbm2ddl.auto", "update");
-		factoryBean.setJpaProperties(props);
-		
-		factoryBean.setPackagesToScan("br.com.casadocodigo.loja.models");
-		
-		return factoryBean;
+
+        Properties props = new Properties();
+        props.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
+        props.setProperty("hibernate.show_sql", "true");
+        props.setProperty("hibernate.hbm2ddl.auto", "update");
+
+        factoryBean.setJpaProperties(props);
+
+        factoryBean.setPackagesToScan("br.com.casadocodigo.loja.models");
+
+        return factoryBean;
 	}
 	
 	@Bean

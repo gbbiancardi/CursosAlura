@@ -1,0 +1,15 @@
+CREATE TABLE [TABELA_DE_CLIENTES]
+( [CPF]				   [VARCHAR](11)  ,
+  [NOME]			   [VARCHAR](100) ,
+  [ENDERECO_1]		   [VARCHAR](150) ,
+  [ENDERECO_2]		   [VARCHAR](150) ,
+  [BAIRRO]			   [VARCHAR](50)  ,
+  [CIDADE]			   [VARCHAR](50)  ,
+  [ESTADO]			   [VARCHAR](2)   ,
+  [CEP]				   [VARCHAR](8)   ,
+  [DATA_DE_NASCIMENTO] [DATE]		  ,
+  [IDADE]			   [SMALLINT]	  ,
+  [SEXO]			   [VARCHAR](1)   ,
+  [LIMITE_DE_CREDITO]  [MONEY]		  ,
+  [VOLUME_DE_COMPRA]   [FLOAT]		  ,
+  [PRIMEIRA_COMPRA]    [BIT] )
