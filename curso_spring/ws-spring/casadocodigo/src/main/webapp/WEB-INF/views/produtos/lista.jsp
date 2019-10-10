@@ -13,6 +13,7 @@
 	<h1>Lista de Produtos</h1>
 	<br />
 	<div>${ sucesso }</div>
+	<div>${ falha }</div>
 	<br />
 	<table>
 		<tr>

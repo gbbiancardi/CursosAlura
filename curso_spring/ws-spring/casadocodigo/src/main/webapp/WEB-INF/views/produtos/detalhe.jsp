@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 
 <!DOCTYPE html>
@@ -17,7 +18,7 @@
 <link href="https://plus.googlecom/108540024862647200608"
 	rel="publisher" />
 
-<title>${ produto.titulo }- Casa do Código</title>
+<title>${ produto.titulo } - Casa do Código</title>
 
 <link href="${contextPath}resources/css/cssbase-min.css"
 	rel="stylesheet" type="text/css" media="all" />
@@ -52,7 +53,7 @@
 				<nav id="main-nav">
 
 					<ul class="clearfix">
-						<li><a href="/carrinho" rel="nofollow">Carrinho</a></li>
+						<li><a href="/carrinho" rel="nofollow">Seu Carrinho (${ carrinhoCompras.quantidade })</a></li>
 						<li><a href="/pages/sobre-a-casa-do-codigo" rel="nofollow">Sobre
 								Nós</a></li>
 						<li><a href="/pages/perguntas-frequentes" rel="nofollow">Perguntas
@@ -96,12 +97,12 @@
 		</header>
 
 		<section class="buy-options clearfix">
-			<form action="/carrinho/add" method="post" class="container">
+			<form action="<c:url value="/carrinho/add" />" method="post" class="container">
 				<input type="hidden" value="${produto.id }" name="produtoId">
 				<ul id="variants" class="clearfix">
 					<c:forEach items="${produto.precos }" var="preco">
 						<li class="buy-option" itemprop="offers" itemscope>
-						<input type="radio" name="tipo" class="variant-radio" id="tipo" value="${preco.tipo }" checked="checked" /> 
+						<input type="radio" name="tipoPreco" class="variant-radio" id="tipo" value="${preco.tipo }" checked="checked" /> 
 						<label itemprop="category" itemscope class="variant-label">${preco.tipo }</label>
 						<small class="compare-at-price">R$ 39,90</small>
 						<p class="variant-price" itemprop="price">${preco.valor }</p></li>
@@ -123,7 +124,9 @@
 			<section class="data product-detail">
 				<h2 class="section-title">Dados do livro:</h2>
 				<p>Número de páginas: <span>${produto.paginas}</span></p>
-				<p>Data de publicação: ${produto.dataLancamento }</p>
+				<p>Data de publicação: 
+					<fmt:formatDate pattern="dd/MM/yyyy" value="${produto.dataLancamento.time }" />
+				</p>
 				<p>Encontrou um erro? <a href='/submissao-errata' target='_blank'>Submeta uma errata</a></p>
 			</section>
 		</div>
