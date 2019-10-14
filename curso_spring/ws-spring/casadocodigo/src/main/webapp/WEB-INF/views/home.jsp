@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security"%>
 
 <!DOCTYPE html>
 <html>
@@ -34,9 +35,12 @@
 			<div id="header-content">
 				<nav id="main-nav">
 					<ul class="clearfix">
-						<li><a href="${s:mvcUrl('CCC#itens').build() }" rel="nofollow">Carrinho (${carrinhoCompras.quantidade })</a></li>
+					<security:authorize access="isAuthenticated()">
+						<li><a href="${s:mvcUrl('PC#listar').build()}">Lista de Produtos</a></li>
+						<li><a href="${s:mvcUrl('PC#form').build()}">Cadastro de Produtos</a></li>
+					</security:authorize>
+						<li><a href="${s:mvcUrl('CCC#itens').build() }" rel="nofollow">Seu Carrinho (${carrinhoCompras.quantidade })</a></li>
 						<li><a href="/pages/sobre-a-casa-do-codigo" rel="nofollow">Sobre Nós</a></li>
-						<li><a href="/pages/perguntas-frequentes" rel="nofollow">Perguntas Frequentes</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -57,10 +61,8 @@
 	</nav>
 
 	<section id="index-section" class="container middle">
-		<h1 class="cdc-call">Últimos dias com os preços promocionais. Aproveite!</h1>
-		
+		<br />
 		<ul class="clearfix book-collection">
-
 			<c:forEach items="${produtos }" var="produto">
 				<li>
 					<a href="${s:mvcUrl('PC#detalhe').arg(0, produto.id).build() }" class="block clearfix">
@@ -70,7 +72,6 @@
 					</a>
 				</li>
 			</c:forEach>
-
 		</ul>
 
 		<h2 class="cdc-call">Diferenciais da Casa do Código</h2>

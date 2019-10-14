@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,6 +35,10 @@
 	      		</div>
 	    	</div><!-- /.navbar-collapse -->
 	    </div>
+		<ul class="nav navbar-nav nav-right">
+			<li><a class="text-white" href="#"><security:authentication property="principal.username"/> </a></li>
+			<li class="nav-item"><a class="text-white" href="<c:url value="/logout" />">Sair</a></li>
+		</ul>
   	  </div>
 	</nav>
 	
