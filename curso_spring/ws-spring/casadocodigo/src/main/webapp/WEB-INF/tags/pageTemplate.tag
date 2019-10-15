@@ -3,6 +3,7 @@
 <%@ attribute name="bodyClass" required="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <%@ attribute name="extraScripts" fragment="true" %>
 
 <!DOCTYPE html>
