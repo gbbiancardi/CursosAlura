@@ -23,6 +23,19 @@ public class LivroBean implements Serializable {
 	private Livro livro = new Livro();
 
 	private Integer autorId;
+	private Integer livroId;
+	
+	public void carregaPelaId() {
+        this.livro = new DAO<Livro>(Livro.class).buscaPorId(this.livroId);
+    }
+
+	public Integer getLivroId() {
+		return livroId;
+	}
+
+	public void setLivroId(Integer livroId) {
+		this.livroId = livroId;
+	}
 
 	public void setAutorId(Integer autorId) {
 		this.autorId = autorId;
@@ -61,9 +74,28 @@ public class LivroBean implements Serializable {
 			throw new RuntimeException("Livro deve ter pelo menos um Autor.");
 		}
 
-		new DAO<Livro>(Livro.class).adiciona(this.livro);
+		if (this.livro.getId() == null) {
+			new DAO<Livro>(Livro.class).adiciona(this.livro);
+		} else {
+			new DAO<Livro>(Livro.class).atualiza(this.livro);
+		}
+		
 
 		this.livro = new Livro();
+	}
+	
+	public void remover(Livro livro) {
+		System.out.println("Removendo livro " + livro.getTitulo());
+		new DAO<Livro>(Livro.class).remove(livro);
+	}
+	
+	public void removerAutorDoLivro(Autor autor) {
+		this.livro.removeAutor(autor);
+	}
+	
+	public void carregar(Livro livro) {
+		System.out.println("Carregando livro " + livro.getTitulo());
+		this.livro = livro;
 	}
 
 	public String formAutor() {
@@ -71,13 +103,13 @@ public class LivroBean implements Serializable {
 		return "autor?faces-redirect=true";
 	}
 	
-	public void comecaComDigitoUm(FacesContext fc, UIComponent component,
+	public void comecaComDigitoNove(FacesContext fc, UIComponent component,
 			Object value) throws ValidatorException {
 
 		String valor = value.toString();
-		if (!valor.startsWith("1")) {
+		if (!valor.startsWith("9")) {
 			throw new ValidatorException(new FacesMessage(
-					"ISBN deveria começar com 1"));
+					"ISBN deveria começar com 9"));
 		}
 
 	}
