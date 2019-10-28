@@ -20,7 +20,7 @@ public class TesteBuscaConta {
 		System.out.println(conta.getTitular());
 		
 		em.getTransaction().commit();
-		em.clear();
+		em.close();
 		
 		EntityManager em2 = new JPAUtil().getEntityManager();
 		em2.getTransaction().begin();
@@ -29,6 +29,6 @@ public class TesteBuscaConta {
 		em2.merge(conta);
 		
 		em2.getTransaction().commit();
-		em2.clear();
+		em2.close();
 	}
 }
