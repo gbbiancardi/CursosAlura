@@ -1,0 +1,18 @@
+
+IF OBJECT_ID ('EnderecoCompleto3', 'FN') IS NOT NULL
+DROP FUNCTION [dbo].[EnderecoCompleto3] 
+
+-- Vai dar error pois o CREATE FUNCTION deve SEMPRE ser o primeiro método do script
+
+CREATE FUNCTION [dbo].[EnderecoCompleto3] 
+(@ENDERECO VARCHAR(100), @CIDADE VARCHAR(50), @ESTADO VARCHAR(50), @CEP VARCHAR(20))
+RETURNS VARCHAR(250)
+AS
+BEGIN
+   DECLARE @ENDERECO_COMPLETO VARCHAR(250)
+   SET @ENDERECO_COMPLETO = @ENDERECO + ', ' + @CIDADE + ', ' + @ESTADO + ', ' + @CEP
+   RETURN @ENDERECO_COMPLETO
+END
+
+
+
