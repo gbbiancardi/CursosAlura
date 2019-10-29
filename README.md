@@ -1,4 +1,4 @@
-# CursosAlura
+# Treinamento BRQ - Estágio
 
 Repositório referente ao treinamento realizado pela BRQ para os novos estagiários, utilizando a plataforma de cursos da Alura.
 
