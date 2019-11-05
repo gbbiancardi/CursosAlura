@@ -35,3 +35,24 @@ WHERE NOT EXISTS(
 	SELECT M.ID FROM MATRICULA M
 	WHERE M.CURSO_ID = C.ID
 );
+
+-- Busque todos os alunos que não tenham nenhuma matrícula nos cursos.
+SELECT A.NOME FROM ALUNO A
+WHERE NOT EXISTS (
+	SELECT M.ID FROM MATRICULA M
+	WHERE M.ALUNO_ID = A.ID
+);
+
+-- Busque todos os alunos que não tiveram nenhuma matrícula no último ano, usando a instrução EXISTS.
+SELECT A.NOME FROM ALUNO A
+WHERE NOT EXISTS(
+	SELECT M.ID FROM MATRICULA M
+	WHERE M.ALUNO_ID = A.ID AND M.DATA > (SELECT SYSDATE - INTERVAL '1' YEAR FROM DUAL)
+);
+
+-- É possível fazer a mesma consulta sem usar EXISTS? Se sim, dê o código. Se não, fale um pouco sobre isso.
+SELECT A.NOME FROM ALUNO A
+WHERE (
+    SELECT COUNT(M.ID) FROM MATRICULA M
+	WHERE M.ALUNO_ID = A.ID AND
+	M.DATA > (SELECT SYSDATE - INTERVAL '1' YEAR FROM DUAL)) = 0;
