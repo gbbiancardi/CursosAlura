@@ -7,14 +7,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import br.com.alura.enviadorEmail.enviadorEmail.EmailService;
 import br.com.alura.listavip.model.Convidado;
-import br.com.alura.listavip.repository.ConvidadoRepository;
+import br.com.alura.listavip.service.ConvidadoService;
 
 @Controller
 public class ConvidadoController {
 
 	@Autowired
-	private ConvidadoRepository repository;
+	private ConvidadoService service;
 	
     @RequestMapping("/")
     public String index(){
@@ -24,7 +25,7 @@ public class ConvidadoController {
     @RequestMapping("/listaconvidados")
     public String listaConvidados(Model model) {
     	
-    	Iterable<Convidado> convidados = repository.findAll();
+    	Iterable<Convidado> convidados = service.obterTodos();
     	
     	model.addAttribute("convidados", convidados);
     	
@@ -36,28 +37,30 @@ public class ConvidadoController {
                        @RequestParam("telefone") String telefone, Model model ){
 
         Convidado novoConvidado = new Convidado(nome, email, telefone);
-        repository.save(novoConvidado);
+        
+        service.salvar(novoConvidado);
+        
+        new EmailService().enviar(nome, email);
 
-        Iterable<Convidado> convidados = repository.findAll();
+        Iterable<Convidado> convidados = service.obterTodos();
         model.addAttribute("convidados", convidados);
 
         return "listaconvidados";
     }
     
-    @RequestMapping(value= "deletar", method = RequestMethod.DELETE)
+    @RequestMapping(value= "deletar", method = RequestMethod.POST)
     public String deletar(@RequestParam("id") Long id, Model model ){
 
-    	Convidado convidado = repository.findOne(id);
-        repository.delete(convidado);
+        service.deletar(id);
 
-        Iterable<Convidado> convidados = repository.findAll();
+        Iterable<Convidado> convidados = service.obterTodos();
         model.addAttribute("convidados", convidados);
 
         return "listaconvidados";
     }
     
     public void obterConvidadoPor(String nome){
-        repository.findByNome(nome);
+        service.acharPorNome(nome);
     }
 
 }
