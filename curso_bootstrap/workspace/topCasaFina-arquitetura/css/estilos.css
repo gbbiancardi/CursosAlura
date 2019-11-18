@@ -12,6 +12,7 @@ header {
 	background-size: cover;
 	background-position: top center;
 	height: 100%;
+	position: relative;
 }
 
 header h1 {
@@ -34,11 +35,11 @@ header h1 {
 
 .titulo-depoimentos {
 	background-color: #0275D8;
-	padding-top: 25px;
-	padding-bottom: 25px;
-	color: #FFF;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    color:#FFF;
 	margin-bottom: 0;
-	font-size: 24px;
+    font-size: 1.5em;
 }
 
 .contato-select,
