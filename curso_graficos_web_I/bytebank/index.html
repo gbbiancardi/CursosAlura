@@ -21,10 +21,22 @@
             ]);
 
             var opcoes = { // customizar aparencia
-                'title': 'Tipos de Gastos',
-                'height': 300,
-                'width': 400,
-                'pieHole': 0.4
+                title: 'Tipos de Gastos',
+                height: 500,
+                width: 900,
+                //'pieHole': 0.4
+                is3D: true,
+                legend: 'labeled',
+                pieSliceText: 'value',
+                //colors: ['grey']
+                slices: {
+                    0:{}, 
+                    1:{color:'grey'}, 
+                    2:{color:'#A6A6A6'}, 
+                    3:{color:'grey'}, 
+                    4:{offset: 0.4},
+                    5:{color:'grey'}
+                }
             };
 
             var grafico = new google.visualization.PieChart(document.getElementById('graficoPizza'));
