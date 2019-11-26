@@ -107,4 +107,30 @@ function desenharGraficos() {
 
     var grafico = new google.visualization.ColumnChart(document.getElementById('graficoColuna'));
     grafico.draw(tabela, opcoes);
+
+    // Colunas surpresa
+    var tabela = new google.visualization.DataTable(); // inserir dados e colunas
+    tabela.addColumn('string', 'categorias');
+    tabela.addColumn('number', 'valores');
+    tabela.addColumn({type: 'number', role: 'annotation'});
+    tabela.addColumn({type: 'string', role: 'style'});
+    tabela.addRows([
+        ['Educação', 2000, 2000, 'blue'],
+        ['Transporte', 500, 500, 'gray'],
+        ['Lazer', 230, 230, 'gray'],
+        ['Saúde', 50, 50, 'gray'],
+        ['Cartão de crédito', 900, 900, '#8904B1'],
+        ['Alimentação', 260, 260, 'gray']
+    ]);
+
+    var opcoes = {
+        title: 'Tipos de Gastos',
+        height: 400,
+        width: 800,
+        vAxis: { gridlines: { count: 0, color: 'transparent'}, textPosition: 'none'},
+        legend: 'none'
+    }
+
+    var grafico = new google.visualization.ColumnChart(document.getElementById('graficoColunaSurpresa'));
+    grafico.draw(tabela, opcoes);
 }
