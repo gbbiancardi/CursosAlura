@@ -1,31 +1,7 @@
 <?php
 
-function sacar (array $conta, float $valorASacar): array 
-{
-    if ($valorASacar > $conta['saldo']) {
-        exibeMensagem("Você não pode sacar este valor");
-    } else {
-        $conta['saldo'] -= $valorASacar;
-    }
-
-    return $conta;
-}
-
-function depositar (array $conta, float $valorADepositar): array 
-{
-    if ($valorADepositar < 0) {
-        exibeMensagem("Você não pode depositar este valor");
-    } else {
-    }
-    $conta['saldo'] += $valorADepositar;
-
-    return $conta;
-}
-
-function exibeMensagem(string $mensagem): string
-{
-    echo $mensagem . PHP_EOL;
-}
+// importa um arquivo apenas uma vez, com seu nome tendo que estar correto.
+require_once 'funcoes.php'; 
 
 $contasCorrentes = [
     '123.456.789-10' => [
@@ -45,6 +21,34 @@ $contasCorrentes = [
 $contasCorrentes['123.456.789-10'] = sacar($contasCorrentes['123.456.789-10'], 500);
 $contasCorrentes['123.456.789-11'] = depositar($contasCorrentes['123.456.789-11'], 500);
 
+// remove uma variável ou item de uma lista.
+unset($contasCorrentes['123.456.789-11']); 
+
+titularComLetrasMaiuscular($contasCorrentes['123.256.789-12']);
+
+// Usando lista
 foreach ($contasCorrentes as $cpf => $conta) {
-    exibeMensagem($cpf . " " . $conta['titular'] . ' ' . $conta['saldo']);
+    ['titular' => $titular, 'saldo' => $saldo] = $conta;
+    exibeMensagem(
+        "$cpf $titular $saldo"
+    );
 }
+
+// Forma correta sem o uso de lista
+/* foreach ($contasCorrentes as $cpf => $conta) {
+    exibeMensagem(
+        "$cpf {$conta['titular']} {$conta['saldo']}"
+    );
+} */
+
+// Uma das formas corretas sem o uso de lista
+/* foreach ($contasCorrentes as $cpf => $conta) {
+    exibeMensagem(
+        "$cpf $conta[titular] $conta[saldo]"
+    );
+} */
+
+// Maneira antiga e trabalhosa
+/* foreach ($contasCorrentes as $cpf => $conta) {
+    exibeMensagem($cpf . " " . $conta['titular'] . ' ' . $conta['saldo']);
+} */
