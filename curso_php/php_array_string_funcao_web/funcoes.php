@@ -24,10 +24,16 @@ function depositar (array $conta, float $valorADepositar): array
 
 function exibeMensagem(string $mensagem)
 {
-    echo $mensagem . PHP_EOL;
+    echo $mensagem . '<br>';
 }
 
 function titularComLetrasMaiuscular(array &$conta) // O & significa que você está pegando o objeto em si e não uma referência dele.
 {
     $conta['titular'] = mb_strtoupper($conta['titular']);
+}
+
+function exibeConta(array $conta)
+{
+    ['titular' => $titular, 'saldo' => $saldo] = $conta;
+    echo "<li>Titular: $titular. Saldo: $saldo.</li>";
 }
