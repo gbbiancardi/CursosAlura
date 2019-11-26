@@ -112,10 +112,16 @@ function desenharGraficos() {
     var grafico = new google.visualization.ColumnChart(document.getElementById('graficoColuna'));
     grafico.draw(tabela, opcoes);
 
-    // Gráfico Barras
-    var tabela = new google.visualization.DataTable(); // inserir dados e colunas
+    // Gráfico Barras 
+    var dadosJson = $.ajax({
+        url: 'https://gist.githubusercontent.com/gbbiancardi/fd25f4d34531ea888c1f5391cbe072e6/raw/65c7315250476cdeac1ddc708fbd0c4146e3474d/dados.json',
+        dataType: 'json',
+        async: false
+    }).responseText;
 
-    tabela.addColumn('string', 'categorias');
+    var tabela = new google.visualization.DataTable(dadosJson); // inserir dados e colunas
+
+    /* tabela.addColumn('string', 'categorias');
     tabela.addColumn('number', 'valores');
     tabela.addColumn({ type: 'string', role: 'annotation' });
     tabela.addColumn({ type: 'string', role: 'style' });
@@ -127,10 +133,14 @@ function desenharGraficos() {
         ['Saúde', 50, 'R$50,00', 'gray'],
         ['Cartão de crédito', 900, 'R$900,00', '#8904B1'],
         ['Alimentação', 260, 'R$260,00', 'gray']
-    ]);
+    ]);*/
 
     // Ordena a tabela pelo índice especificado da coluna.
     tabela.sort([{ column: 1, desc: true }]);
+
+    // Transforma a tabela em JSON automaticamente e mostra no console do navegador, para que possamos pegá-lo.
+    /* var conversao = tabela.toJSON();
+    console.log(conversao); */
 
     var opcoes = {
         title: 'Tipos de Gastos',
@@ -163,12 +173,33 @@ function desenharGraficos() {
 
     //Gráfico de Barras com arquivo JSON
     var dadosJson = $.ajax({
-        url: 'dados.json',
+        //Criar gist no GitHub e clicar em raw. Pegar o URL de lá.
+        url: 'https://gist.githubusercontent.com/gbbiancardi/c9d9b55d2f0d7e23e4481ac35e16f877/raw/dafa4ccf1c14dd15864e5e86841b958e2d6be4c4/dados.json',
         dataType: 'json',
         async: false
     }).responseText;
 
     var tabela = new google.visualization.DataTable(dadosJson);
+
+    tabela.sort([{ column: 1, desc: true }]);
+
+    var opcoes = {
+        title: 'Usuários e Poupanças',
+        height: 500,
+        width: 900,
+        legend: 'none',
+        hAxis: {
+            gridlines:
+            {
+                color: 'transparent'
+            },
+            textPosition: 'none'
+        },
+        annotations:
+        {
+            alwaysOutside: true
+        }
+    }
 
     var grafico = new google.visualization.BarChart(document.getElementById('graficoBarrasJson'));
     grafico.draw(tabela, opcoes);
