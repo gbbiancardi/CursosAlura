@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Curso {
+public class Curso implements Comparable<Curso>{
 
 	private String nome;
 	private String instrutor;
@@ -60,6 +60,11 @@ public class Curso {
 
 	public boolean estaMatriculado(Aluno aluno) {
 		return this.alunos.contains(aluno);
+	}
+
+	@Override
+	public int compareTo(Curso outroCurso) {
+		return this.nome.compareTo(outroCurso.nome);
 	}
 
 }
