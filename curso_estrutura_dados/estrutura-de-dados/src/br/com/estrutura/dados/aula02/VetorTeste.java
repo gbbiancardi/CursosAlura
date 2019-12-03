@@ -1,3 +1,4 @@
+package br.com.estrutura.dados.aula02;
 
 public class VetorTeste {
 
