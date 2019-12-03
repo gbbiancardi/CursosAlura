@@ -1,4 +1,4 @@
-package br.com.estrutura.dados.aula02;
+package br.com.estrutura.dados.aula02.vetor;
 import java.util.Arrays;
 
 public class Vetor {

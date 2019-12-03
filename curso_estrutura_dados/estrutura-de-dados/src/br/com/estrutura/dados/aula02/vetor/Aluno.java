@@ -1,4 +1,4 @@
-package br.com.estrutura.dados.aula02;
+package br.com.estrutura.dados.aula02.vetor;
 
 public class Aluno {
 

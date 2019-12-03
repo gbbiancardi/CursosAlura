@@ -1,4 +1,4 @@
-package br.com.estrutura.dados.aula03;
+package br.com.estrutura.dados.aula03.listas;
 
 public class Celula {
 
