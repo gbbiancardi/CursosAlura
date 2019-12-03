@@ -8,6 +8,11 @@ public class TestaListaLigada {
 		// por referências, é fácil inserir um elemento no meio da lista (afinal, basta
 		// acertar das células a esquerda e a direita).
 
+		// Na lista ligada simples a célula só aponta para a próxima célula da lista. Já
+		// na lista duplamente ligada, a célula tem referências para a anterior e para a
+		// próxima. A grande vantagem é que muitas operações necessitam também da célula
+		// anterior, e tudo fica mais fácil com a referência armazenada em cada célula.
+
 		ListaLigada lista = new ListaLigada();
 
 		System.out.println(lista);
@@ -32,7 +37,7 @@ public class TestaListaLigada {
 
 		lista.removeDoFim();
 		System.out.println(lista);
-		
+
 		lista.remove(0);
 		System.out.println(lista);
 
