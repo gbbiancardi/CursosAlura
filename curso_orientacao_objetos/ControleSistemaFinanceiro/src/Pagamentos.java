@@ -1,11 +1,12 @@
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Iterator;
 
-public class Pagamentos {
+public class Pagamentos implements Iterable<Pagamento> {
 	
 	private double valorPago;
-	private List<Pagamento> pagamentos = new ArrayList<Pagamento>();
+	private HashSet<Pagamento> pagamentos = new HashSet<Pagamento>();
 
 	public double getValorPago() {
 		return this.valorPago;
@@ -59,5 +60,11 @@ public class Pagamentos {
 	
 	public boolean foiRealizado(Pagamento pagamento) {
 		return pagamentos.contains(pagamento);
+	}
+
+	@Override
+	public Iterator<Pagamento> iterator() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
