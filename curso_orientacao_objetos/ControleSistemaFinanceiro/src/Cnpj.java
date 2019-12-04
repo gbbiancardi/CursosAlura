@@ -2,7 +2,7 @@
 public class Cnpj {
 	
 	private String valor;
-
+	
 	public boolean ehValido() {
 		return primeiroDigitoVerificador() == primeiroDigitoCorreto()
 				&& segundoDigitoVerificador() == segundoDigitoCorreto();
