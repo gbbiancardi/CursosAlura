@@ -1,8 +1,17 @@
 
-public class Cnpj {
+public class Cnpj implements Documento{
 	
 	private String valor;
 	
+	public Cnpj() {
+		
+	}
+	
+	public Cnpj(String valor) {
+		super();
+		this.valor = valor;
+	}
+
 	public boolean ehValido() {
 		return primeiroDigitoVerificador() == primeiroDigitoCorreto()
 				&& segundoDigitoVerificador() == segundoDigitoCorreto();

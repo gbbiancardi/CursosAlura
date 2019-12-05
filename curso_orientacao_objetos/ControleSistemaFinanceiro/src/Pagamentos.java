@@ -64,7 +64,6 @@ public class Pagamentos implements Iterable<Pagamento> {
 
 	@Override
 	public Iterator<Pagamento> iterator() {
-		// TODO Auto-generated method stub
-		return null;
+		return pagamentos.iterator();
 	}
 }

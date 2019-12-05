@@ -14,6 +14,11 @@ public class TestaPagamentos {
 		System.out.println("Valor total pago: " + pagamentos.getValorPago());
 		System.out.println("O pagamento 01 já foi realizado? " + pagamentos.foiRealizado(pagamento1));
 		
+		Iterable<Pagamento> lista = new Pagamentos();
+		for (Pagamento pagamento : pagamentos) {
+			System.out.println(pagamento.getValor());
+		}
+		
 	}
 
 }

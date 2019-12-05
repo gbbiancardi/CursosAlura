@@ -10,7 +10,7 @@ public class RelatorioDeDivida {
 	}
 	
 	public void geraRelatorio(NumberFormat formatador) {
-		System.out.println("CNPJ do credor: " + divida.getCnpjCredor());
+		System.out.println("CNPJ do credor: " + divida.getDocumentoCredor());
 		System.out.println("Credor: " + divida.getCredor());
 		
 		System.out.println("Valor da divida: " + formatador.format(divida.getTotal()));
@@ -21,7 +21,7 @@ public class RelatorioDeDivida {
 		Divida divida = new Divida();
 		divida.setCredor("Uma empresa");
 		divida.setTotal(100);
-		divida.getCnpjCredor().setValor("00.000.001/0001-01");
+		divida.setDocumentoCredor(new Cnpj("00.000.001/0001-01"));
 		
 		Pagamento pagamento = new Pagamento();
 		pagamento.setCnpjPagador("00.000.002/0002-02");
